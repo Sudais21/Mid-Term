@@ -1,0 +1,64 @@
+---
+title: "Character Encoding"
+output:
+  word_document: default
+  pdf_document: default
+date: "2024-10-07"
+---
+
+```{r}
+# Load required libraries
+library(tidyverse)
+
+# Define the input file path
+input_file <- "D:/Mid Term Solved/my472-at24-ps2-sarahjkaram-fork-main/ex1/TextFile.txt"
+
+# Guess the encoding
+encoding_info <- readr::guess_encoding(input_file)
+print("Guessed Encoding:")
+print(encoding_info)
+
+# Select the first guessed encoding
+if (length(encoding_info$encoding) > 0) {
+  detected_encoding <- encoding_info$encoding[1]
+  print(paste("Detected encoding is:", detected_encoding))
+} else {
+  stop("Unable to detect file encoding. Please verify the file format.")
+}
+
+# Define the output file path
+output_file <- "D:/Mid Term Solved/my472-at24-ps2-sarahjkaram-fork-main/ex1/TextFileUTF.txt"
+
+# Read the file with the detected encoding
+lines <- tryCatch(
+  read_lines(input_file, locale = locale(encoding = detected_encoding)),
+  error = function(e) {
+    stop("Error reading the file. Please verify the file encoding or file contents.")
+  }
+)
+
+# Check if lines contain NULL or are empty
+if (is.null(lines) || length(lines) == 0) {
+  stop("File is empty or could not be read. Please check the file contents.")
+}
+
+# Convert lines to UTF-8
+lines_utf8 <- tryCatch(
+  iconv(lines, from = detected_encoding, to = "UTF-8"),
+  error = function(e) {
+    stop("Error converting the file to UTF-8.")
+  }
+)
+
+# Save the converted file
+writeLines(lines_utf8, output_file)
+print(paste("File successfully converted to UTF-8 and saved at:", output_file))
+
+# Display the content of the UTF-8 file
+cat("File Content:\n")
+print(lines_utf8)
+
+# Summarization instructions
+cat("\n---\n")
+cat("Use https://translate.google.com/ for translation if the text is in a non-English language.\n")
+cat("Summarize the text below:\n")

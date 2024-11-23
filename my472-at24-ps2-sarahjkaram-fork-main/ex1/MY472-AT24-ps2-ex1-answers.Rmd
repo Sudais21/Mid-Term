@@ -1,0 +1,48 @@
+---
+title: "MY472: Mid-Term Problem Set Solutions"
+author: "LSE Candidate Number: "
+date: "Autumn Term 2024"
+output: html_document
+---
+
+```{r setup, include=FALSE} 
+# this chunk contains code that sets global options for the entire .Rmd. 
+# we use include=FALSE to suppress it from the top of the document, but it will still appear in the appendix. 
+
+knitr::opts_chunk$set(echo = FALSE) # actually set the global chunk options. 
+# we set echo=FALSE to suppress code such that it by default does not appear throughout the document. 
+# note: this is different from .Rmd default
+```
+
+<!-- DO NOT EDIT THIS LINE OR ANYTHING ABOVE IT, EXCEPT PUTTING YOUR CANDIDATE NUMBER AT THE TOP. ALL OF YOUR WORK SHOULD BE COMPLETED BELOW HERE. -->
+
+This document contains the necessary commands and layout to meet the formatting requirements for MY472. You should use this file as the basis for your own answers to the assigned exercises.
+
+**You should delete the instructions/examples/text that we include in this file (between line 17 and line 41) and replace with your answers for the exercise. As indicated in the comments above and below,  *do not* delete or modify: (1) the header of this file including the first chunk of R code above or (2) the Appendix section. The one exception is that you should put your LSE candidate number in the "author" line at the very top of this file. Do not include any personally identifying information in your Submission Repo, except for your LSE candidate number.**
+
+**_Failure to put your LSE candidate number in the heading above will cause you to receive zero marks and/or no feedback on this assignment._**
+
+Here is an example of an R code chunk, which will automatically appear in the appendix when you knit this file.
+
+```{r plot_example}
+set.seed(89) # set a seed for R's psuedo-randomiser, for replicability.
+x <- rnorm(100) # randomly draw 100 obs from normal distribution, save as object
+y <- rnorm(100) 
+plot(x,y) # two-way scatterplot using R's default plotting
+```
+
+Here is an example of an R code chunk, that will appear directly below this text and not in the appendix. 
+
+```{r echo_example, echo=TRUE}
+# here we use echo=TRUE to override our global options and make the chunk appear exactly here. 
+print("This code chunk is visible in this section.")
+```
+
+<!-- DO NOT EDIT THIS LINE OR ANYTHING BELOW IT. ALL OF YOUR WORK SHOULD BE COMPLETED ABOVE. -->
+
+## Appendix: All code in this assignment
+
+```{r ref.label=knitr::all_labels(), echo=TRUE, eval=FALSE} 
+# this chunk generates the complete code appendix. 
+# eval=FALSE tells R not to run (``evaluate'') the code here (it was already run before).
+```

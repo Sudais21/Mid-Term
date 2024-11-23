@@ -1,0 +1,2 @@
+Bonjour, ceci est un fichier texte encodé en ISO-8859-1.
+Il contient des caractères accentués comme é, è, à et ç.

@@ -1,0 +1,2 @@
+Hello, this is a text file encoded in ISO-8859-1. 
+It contains accented characters like é, è, à, and ç.
